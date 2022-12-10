@@ -1,0 +1,59 @@
+where to set vim config? ---> /etc/vim/vimrc
+
+
+press...
+
+INSERT/ a / i --> to start typing
+
+ESC --> quit MODES
+
+: --> once pressed ESC, to enter commands
+
+:q --> quit without save
+
+:(any)! --> avoid propmt for confirmation
+
+:w --> save changes without  quit
+
+:wq/x --> save changes and quit
+
+u --> undo
+
+Ctrl+r --> redo
+
+:set nu --> display line numbers
+
+:set nu! --> hide line numbers
+
+dd --> cut line
+
+yy --> copy line
+
+p --> paste line
+
+o --> add a new line below the current line, and enter INSERT mode
+
+d(any number)d --> cut any number lines (includes current line)
+
+y(any number)y --> copy any number lines (includes current line)
+
+v --> enter VISUAL mode, where we can select multiple lines from current cursor position
+
+d --> cut selection (VISUAL mode)
+
+/ --> search ocurrencies (case sensitive)
+
+n --> go to next ocuerrence (searching: / )
+
+N --> go to previous ocurrence (searching: / )
+
+gg --> go to the begin of the file
+
+G --> go to the end of the file
+
+
+
+
+
+
+

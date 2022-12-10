@@ -1,0 +1,129 @@
+REGULAR EXPRESSIONS
+____________________________
+
+Mainly compossed by two types of characteres: Literal characters & Methacharacters
+
+
+^ (carret) symbol = represents the START of the line
+$ (dollar) symbol = represents the END of the line
+
+^ and $ symbols --> match a position (begin and end respectively) in line, rather than any actual text characters themselves
+ 
+so...
+
+^cat --> matches any line starting with a 'c', followed by an 'a', followed by a 't'
+cat$ --> matches any line ending with a 'c', followed by an 'a', followed by a 't', and then nothing else
+^cat$ --> matches any line starting by c-a-t consecutively, and ending there
+^$ --> matches any line starting and ending right away (an empty line: not even blanks there)
+^ --> matches wvery line having an start i.e it will match all the lines, even the empty lines!
+
+
+
+---------------------------
+CHARACTER CLASSES
+
+use --> [] to enclose the characters you want to match
+for example: while [a] matches just an 'a'  and [e] matches just an 'e'... [ea] matches either.
+
+Let’s say you want to search for “grey” but also want to find it if it were spelled “gray”.
+In this case you should use gr[ea]y :  t " his means to find “ g, followed by r, followed
+by either an 'e' OR an 'a', all followed by 'y' ”.
+
+You can list in the class as many characters as you like. For example, ![123456]"
+matches any of the listed digits. This particular class might be useful as part of
+!<H[123456]>, w" hich matches <H1>, <H2>, <H3>, etc. This can be useful when
+searching for HTML headers.
+
+
+Within a character class, the character-class metacharacter ‘-’ (dash) indicates a
+range of characters:
+
+[0123456789] = [0-9]
+
+[abcdefghijklmnopqrstuvwxyz] = [a-z]
+
+
+The order in which ranges are given doesn’t matter:  [0-9a-z] = [a-z0-9]
+
+
+You can freely combine ranges with literal characters: ![0-9A-Z_!.?]" matches a digit, uppercase letter, underscore, exclamation point, period, or a question mark.
+
+
+Note that a dash is a metacharacter only within a character class — otherwise it
+matches the normal dash character. In fact, it is not even always a metacharacter
+within a character class. If it is the first character listed in the class, it can’t
+possibly indicate a range, so it isnot considered a metacharacter.
+
+Along the same lines, the question mark and period at the end of the class
+are usually regular-expression metacharacters, but only when not within a class
+(so, to be clear, the only special characters within the class in ![0-9A-ZR!.?]" ar e the two dashes).
+
+Consider character classes as their own mini language. The rules regarding
+which metacharacters are supported (and what they do) are completely different inside and outside of character classes.
+
+--------------------------
+Negated Character Classes:
+
+If you use [^...] instead of [...], it will list all possible characters
+except those that are listed.The leading ˆ in the class “negates” the list.
+
+for example: 
+
+[^1-6] --> matches the characters that are NOT a number from 1-6
+
+
+----------------
+
+
+The range-building dash '-' is valid only inside a character class (and at that, only when not first inside the
+class).
+
+'ˆ' is a line anchor outside a class, but a class metacharacter inside a class
+(but, only when it is immediately after the class’s opening bracket; otherwise,
+it’s not special inside a class) 
+
+
+--------------------------------
+MATCHING ANY CHARACTER WITH DOT
+
+The metacharacter '.' (usually called dot or point) is a shorthand for a character
+class that matches ANY character. It can be convenient when you want to have an
+“any character here” placeholder in your expression.
+
+For example, if you want to search for a date such as 03/19/76, 03-19-76, or even 03.19.76,
+you could go to the trouble to construct a regular expression that uses character classes to
+explicitly allow ‘/’, ‘-’, or ‘.’ between each number, such as '03[-./]19[-./]76'.
+However, you might also try simply using '03.19.76'.
+
+Quite a few things are going on with this example that might be unclear at first.
+In '03[-./]19[-./]76', the dots are not metacharacters because they are within a
+character class.
+
+Remember, the list of metacharacters and their meanings are differ ent inside and outside of characterclasses.
+The dashes are also not class metacharacters in this case because each is the first thing after [ or [ˆ. Had they not been first, as with '[.-/]', they would be the class range metacharacter, which would be a mistake in this situation.
+
+With '03.19.76', the dots are metacharacters — ones that match any character
+(including the dash, period, and slash that we are expecting). However, it is
+important to know that each dot can match any character at all, so it can match,
+say, ‘lottery numbers: 19 203319 7639’.
+
+So, '03[-./]19[-./]76' is more precise, but it’s more difficult to read and write.
+'03.19.76' is easy to understand, but vague. Which should we use?
+
+It all depends upon what you know about the data being searched, and just how
+specific you feel you need to be. One important, recurring issue has to do with
+balancing your knowledge of the text being searched against the need to always
+be exact when writing an expression.
+
+For example, if you know that with your data it would be
+highly unlikely for '03.19.76' to match in an unwanted place,
+it would certainly be reasonable to use it.
+
+--> Knowing the target text well is an important part of wielding regular expressions effectively
+
+
+
+
+
+
+

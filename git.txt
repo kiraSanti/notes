@@ -1,0 +1,70 @@
+GIT & GITHUB NOTES:
+
+- t = term/theory
+- c = command
+- r = resource
+
+
+t - repository --> database where the files and their changes 1are going to be allocated
+
+t - Git:
+	Is optimized to track and save changes incrementally
+	Allows us to have a history, go back to a previous version, and add functionalities
+	Tracks and records the changes made by other people on the project
+	Stores the information as a set of files 
+	There are no changes, file corruption or any alteration without Git knowing about it
+	Almost everything in Git is local. Outside resources or informaton are hardly needed: Local resources are enough	Git has 3 states in which files can be located: STAGED, MODIFIED, and COMMITED	
+
+
+c - git init --> initializes a repository on the current directory
+
+c - git add `filename.extension` --> makes the repository aware of `filename.extension`
+				     Now the file is on the Stage Area, ready to be committed	
+
+				 --> if we use '-p' flag --> Interactively choose WHAT changes to
+							     add to the index and what NOT.
+
+							     
+c - git commit -m "descibe changes made HERE" --> sends the changes made to the file to the repository, 
+					          so we can track and manage it and its changes...
+					          its multiple versions!
+
+c - git status --> check repo overall status --> among other stuff, it'll show u the changes/changed files
+					         not added/commited yet	  
+
+c - git show --> shows u the history of the changes made, including the specific line (Where), changes made (What),
+		 When and Who made the changes			
+
+c - git log `filename.extension` --> check the complete History of a file
+
+c - git push --> sent file(s) and its changes from the local repo to a remote repo (GitHub)
+	
+c - git pull --> get file(s) and its changes from a remote repository (GitHub) to the local repo
+
+t - Branch-based --> we can create multiple branches so the Main one remains safe
+ 		     along the time and the different changes the project may have
+
+t - We should not save binaries type files on the Git/GitHub repo, only small binaries files (such as logos) which 
+    remain unchanged along the project lifetime. The binaries must be saved on a CDN (Content Delivery Network)
+
+
+c - git rm --cached `filename.txt` --> takes the specified file out of the STAGE area
+
+c - git rm -r --cached `dirname.txt` --> takes the specified directory (with its content: Recursively)
+                                         out of the STAGE area
+
+
+c - git config
+                --list --> shows current config
+                --global user.name "your name here"
+                --global user.email "your email here"
+
+r - https://static.platzi.com/media/user_upload/estados-git-0acb84f7-5080-4098-99d9-59012a3b8e86.jpg
+
+c - git diff --> use it BEFORE 'git-adding' changed files to the "Index/Staging-area/Cache", to check the changes being made
+
+c - 
+
+
+
+

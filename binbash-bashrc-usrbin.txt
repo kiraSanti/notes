@@ -1,0 +1,5 @@
+/bin/bash --> is the path where the interpreter that is capable of executing -among others- .sh files is located
+
+~/.bashrc --> here we set environment variables and aliases
+
+/usr/bin --> here we add the scripts so they can be used globally
